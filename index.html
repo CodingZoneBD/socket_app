@@ -10,10 +10,21 @@
 
 <body>
     <h1>Socket Server Run</h1>
+    <h1 id="MyTime"></h1>
+    <h1 id="MyEventID"></h1>
 
     <script src="/socket.io/socket.io.js"></script>
     <script>
         let socket = io();
+        // socket.on('message', function (msg) { document.write(msg) })
+        socket.on('message', function (msg) {
+            document.getElementById("MyTime").innerHTML = "";
+            document.getElementById("MyTime").innerHTML = msg;
+        })
+
+        socket.on('MyEvent', function (msg) {
+            document.getElementById("MyEventID").innerHTML = msg;
+        })
     </script>
 </body>
 

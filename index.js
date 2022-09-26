@@ -8,6 +8,22 @@ const io = new Server(expressServer);
 
 io.on('connection', function (socket) {
     console.log("New User Connected");
+
+    // setTimeout(function () {
+    //     socket.send("Socket send this data (Server --------> Client)")
+    // }, 3000)
+
+    setInterval(function () {
+        let d = new Date();
+        let t = d.toString('YYYY-MM-dd');
+        socket.send(t)
+    }, 500)
+
+    // Custom Event 
+    setTimeout(function () {
+        socket.emit("MyEvent", "This my custom Event")
+    }, 3000)
+
     socket.on('disconnect', function () {
         console.log("User Disconnect");
     })
