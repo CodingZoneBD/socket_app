@@ -3,8 +3,15 @@ const app = express();
 const http = require('http');
 const expressServer = http.createServer(app);
 
-const { server } = require('socket.io');
-const io = new server(expressServer);
+const { Server } = require('socket.io');
+const io = new Server(expressServer);
+
+io.on('connection', function (socket) {
+    console.log("New User Connected");
+    socket.on('disconnect', function () {
+        console.log("User Disconnect");
+    })
+})
 
 
 app.get('/', function (req, res) {
