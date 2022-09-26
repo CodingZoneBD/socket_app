@@ -6,6 +6,19 @@ const expressServer = http.createServer(app);
 const { Server } = require('socket.io');
 const io = new Server(expressServer);
 
+
+//NameSpace
+let buyNsp = io.of("/buy");
+buyNsp.on('connection', function (socket) {
+    buyNsp.emit('MyBroadcast', "Hello buy!!!")
+})
+//NameSpace
+let sellNsp = io.of("/sell");
+sellNsp.on('connection', function (socket) {
+    sellNsp.emit('MyBroadcast', "Hello sell!!!")
+})
+
+
 io.on('connection', function (socket) {
     console.log("New User Connected");
 
@@ -34,7 +47,7 @@ io.on('connection', function (socket) {
 
 
     // Broadcasting
-    io.sockets.emit('MyBroadcast', "Hello EveryOne!!!")
+    // io.sockets.emit('MyBroadcast', "Hello EveryOne!!!")
 
 })
 
