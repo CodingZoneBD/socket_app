@@ -28,9 +28,14 @@ io.on('connection', function (socket) {
     //     console.log("User Disconnect");
     // })
 
-    socket.on('message', function (msg) {
-        console.log(msg);
-    })
+    // socket.on('message', function (msg) {
+    //     console.log(msg);
+    // })
+
+
+    // Broadcasting
+    io.sockets.emit('MyBroadcast', "Hello EveryOne!!!")
+
 })
 
 

@@ -12,8 +12,13 @@
     <!-- <h1>Socket Server Run</h1> -->
     <!-- <h1 id="MyTime"></h1>
     <h1 id="MyEventID"></h1> -->
-    <input type="text" id="name">
-    <button id="send" onclick="send()">Send</button>
+
+    <!-- <input type="text" id="name">
+    <button id="send" onclick="send()">Send</button> -->
+
+
+    <h1 id="Msg"></h1>
+
 
     <script src="/socket.io/socket.io.js"></script>
     <script>
@@ -28,12 +33,15 @@
         //     document.getElementById("MyEventID").innerHTML = msg;
         // })
 
-        function send() {
-            var name = document.getElementById("name").value;
-            // alert(name)
+        // function send() {
+        //     var name = document.getElementById("name").value;
+        //     // alert(name)
+        //     socket.send(name)
+        // }
 
-            socket.send(name)
-        }
+        socket.on("MyBroadcast", function (data) {
+            document.getElementById("Msg").innerHTML = data;
+        })
     </script>
 </body>
 
