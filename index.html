@@ -9,22 +9,31 @@
 </head>
 
 <body>
-    <h1>Socket Server Run</h1>
-    <h1 id="MyTime"></h1>
-    <h1 id="MyEventID"></h1>
+    <!-- <h1>Socket Server Run</h1> -->
+    <!-- <h1 id="MyTime"></h1>
+    <h1 id="MyEventID"></h1> -->
+    <input type="text" id="name">
+    <button id="send" onclick="send()">Send</button>
 
     <script src="/socket.io/socket.io.js"></script>
     <script>
         let socket = io();
         // socket.on('message', function (msg) { document.write(msg) })
-        socket.on('message', function (msg) {
-            document.getElementById("MyTime").innerHTML = "";
-            document.getElementById("MyTime").innerHTML = msg;
-        })
+        // socket.on('message', function (msg) {
+        //     document.getElementById("MyTime").innerHTML = "";
+        //     document.getElementById("MyTime").innerHTML = msg;
+        // })
 
-        socket.on('MyEvent', function (msg) {
-            document.getElementById("MyEventID").innerHTML = msg;
-        })
+        // socket.on('MyEvent', function (msg) {
+        //     document.getElementById("MyEventID").innerHTML = msg;
+        // })
+
+        function send() {
+            var name = document.getElementById("name").value;
+            // alert(name)
+
+            socket.send(name)
+        }
     </script>
 </body>
 
